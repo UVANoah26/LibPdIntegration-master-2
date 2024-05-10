@@ -1,11 +1,18 @@
 # LibPdIntegration-master-2
- 
-The Compo 2 for AVE
 
-In its current form (compo 2) - I have a sawtooth synth which plays and a plane of prisms which react to the sound. Additionally, I have some simple drums which are getting added in every 4 measures based on a master clock.
+My goal for this project was to make a hardwave inspired piece. I wanted my music to have a fat kick, a deep cloud sounding Reese Bass, and a harsh melody on top. I created the fat kick by finding an EDM kick sample. I made the Reese Bass by making a detuner based on a saw wave. The melody also makes use of a detuner but with fewer voices to avoid an ethereal sound.
 
-For the Final Compo - the fleshed out version of this I have the following expectations: I would like to add voices of unison to my current sawtooth synth to create a "Reese Bass" sound (We covered in class I have not implemented yet). I would like to add better more musical reverb to the sampled drums. I would like to plan out my piece to have an intro and if possible a drop, maybe with a riser, although I am shaky on my music generation so it could end up as a long intro. The music will clearly have to speed up to fit the genre and right now the drums are too band and not EDM enough.
+My master clock divided my work into three sections, the first is an introduction to the snares and some of the visual elements before the arrival of the fog. Additionally we, the viewers, can take in how the piece reacts to the Reese Bass. The second section is the “drop” the heavy kicks come in along with the melody in a very classic hardware manner. The third section speeds up the bass and the kicks to create a quicker sound and a more sequential melody.
 
-The ultimate goal musically for me is to create a 30"" Hardwave style piece. Visually I would like to make my prisim field to glide smoother and match it to the asthetic. (Moodier) I will be adding a second sound controlled element reactive to the kicks this will be a large element perhaps in the background where the scale of the object will feel worhty of the the reverby sound.
+Visually, I wanted a piece that echoed some of the aesthetic traditions of hardwave music. Traditions such as neon lights which are moodier than the similar lights of 80s synthwave. To mirror this tradition I implemented a moving neon grid using an unlit shader and moody lighting. I also wanted an element which reminded me of a car because lots of hardwave music will include revving sounds or will have artwork with cars. My favorite part of this project are the red fog particles which flicker in the depths of the gray fog. They are hidden in the fog because they are supposed to be reminiscent of seeing the rear lights of a car ahead of you in the fog at night. I felt this element came together flawlessly and added depth to the project. In a similar vein my field of prisms reacts to sound in a way reminiscent of a combustion engine. The snares pop some prims out and then the kick resets them all in the way pistons are driven back into an engine all at once. To complete the look I added bloom on top it all to give the neon elements that astigmatism look that happens during night drives, the crux of the hardwave style.
 
-Finally, I would like the entire project to be visually complete in that everything in view of the camera will match the asthetic without immersion ruining skybox views etc.
+
+
+REFERENCE FOR MUSICAL ELEMENTS:
+	Reese Bass : Pitch changes color of the synthwave grid walls
+	Melody : Every note spawns a red fog (car rear light) in the fog (Spatial Audio)
+	Drums:
+		1.  Kick : Resets the prism array
+		2. Snare : Scale up two prisms.
+	Clock: Grey Fog at Section 2 of the musical piece
+	
