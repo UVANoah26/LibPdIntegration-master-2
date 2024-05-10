@@ -16,13 +16,14 @@ public class Arr2Prism : MonoBehaviour
     [SerializeField]
     float Dim; //Scale of the Cubes
 
-    [SerializeField]
-    List<bool> Steps;
+    //[SerializeField]
+    List<bool> Steps = new List<bool> { true, false, true, false };
 
     GameObject[][] StepsObjs;
 
     [SerializeField]
     public LibPdInstance patch;
+  
     int ramp;
     float t;
 
@@ -68,7 +69,6 @@ public class Arr2Prism : MonoBehaviour
     Vector4 adsr_params;
 
     Color Shade = new Color(1,1,1);
-
 
     List<bool> Kick0 = new List<bool> {false,false,false,false};
     List<bool> Snare0 = new List<bool> { false, true, true, false };
@@ -127,7 +127,7 @@ public class Arr2Prism : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Clock.isOn);
+        //Debug.Log(Clock.isOn);
         if (Clock.isOn[0])
         {
             kick = Kick0;
@@ -181,16 +181,20 @@ public class Arr2Prism : MonoBehaviour
                 patch.SendBang("sticks_bang");
                 Shade = new Color(1.0f, .7f, .7f);
             }
-            count = (count + 1) % kick.Count;
+            
 
-            Counter = (Counter + 1) % Steps.Capacity;
-            if (Steps[Counter])
+    
+            if (Steps[count])
             {
+                //Debug.Log("SEQNOTE");
+
                 patch.SendMidiNoteOn(0, pitch, 80);
             }
             else {
                 patch.SendMidiNoteOn(0, pitch2, 80);
             }
+            Counter = (Counter + 1) % Steps.Capacity;
+            count = Clock.counterBeat;
             //Moving every cube in the same collumn
 
        
@@ -215,7 +219,7 @@ public class Arr2Prism : MonoBehaviour
             StepsObjs[Counter].transform.position = new Vector3(StepsObjs[Counter].transform.position.x, 0, 0);
             StepsObjs[Counter].GetComponent<Renderer>().material.color = new Color(1, 1, 1);
         }
-        
+          */
 
         //ADSR Management
         Vector4 adsr_par = new Vector4(A, D, S, R);
@@ -223,6 +227,6 @@ public class Arr2Prism : MonoBehaviour
         patch.SendList("ADSR", gate_len, A, D, S, R);
         bool gate = ramp < gate_len;
         float ADSR = ControlFunctions.ADSR(ramp, gate, adsr_par);
-        */
+      
     }
 }

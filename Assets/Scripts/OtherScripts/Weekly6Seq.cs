@@ -58,10 +58,13 @@ public class Weekly6Seq : MonoBehaviour
         int MS = Mathf.RoundToInt(Time.deltaTime * 1000);
 
         float lfo = ControlFunctions.Sin(t, 0.5f, 0);
-        int[] pitchArr = ControlFunctions.PitchArray(0, new Vector2Int(48, 60), mode);
+        int[] pitchArr = ControlFunctions.PitchArray(0, new Vector2Int(36, 48), mode);
+        int[] pitchArr2 = ControlFunctions.PitchArray(0, new Vector2Int(24, 36), mode);
         int pitch_index = Mathf.RoundToInt((lfo * 0.5f + 0.5f) * (pitchArr.Length - 1));
-        int pitch = pitchArr[pitch_index];
+        int pitch_index2 = Mathf.RoundToInt((lfo * 0.5f + 0.5f) * (pitchArr2.Length - 1));
 
+        int pitch = pitchArr[pitch_index];
+        int pitch2 = pitchArr[pitch_index];
         bool trig = ramp > (ramp + MS) % beat;
         ramp = (ramp + MS) % beat;
         if (trig)
@@ -75,8 +78,9 @@ public class Weekly6Seq : MonoBehaviour
             }
 
         }
-        if (!Steps[Counter])
+        if (Counter==3 && !Steps[Counter])
         {
+            patch.SendMidiNoteOn(0, pitch2, 80);
             StepsObjs[Counter].transform.position = new Vector3(StepsObjs[Counter].transform.position.x, 0, 0);
             StepsObjs[Counter].GetComponent<Renderer>().material.color = new Color(1, 1, 1);
         }

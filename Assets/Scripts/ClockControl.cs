@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ClockControl : MonoBehaviour
 {
+    [SerializeField]
+    public GameObject Fog;
+
     [HideInInspector]
     public float t;
     [HideInInspector]
@@ -30,6 +33,7 @@ public class ClockControl : MonoBehaviour
     [HideInInspector]
     public bool[] isOn;
 
+    int Latch = 0;
 
 
     // Start is called before the first frame update
@@ -61,6 +65,12 @@ public class ClockControl : MonoBehaviour
         }
         else if (counterMeasure < sect2)
         {
+            if (Latch == 0)
+            {
+                Latch++;
+                Fog = Instantiate(Fog);
+                Fog.SetActive(true);
+            }
             isOn[0] = false;
             isOn[1] = true;
             isOn[2] = false;
@@ -73,7 +83,7 @@ public class ClockControl : MonoBehaviour
         }
 
 
-        Debug.Log("beat " + counterBeat);
-        Debug.Log("measure " + counterMeasure);
+        //Debug.Log("beat " + counterBeat);
+        //Debug.Log("measure " + counterMeasure);
     }
 }
